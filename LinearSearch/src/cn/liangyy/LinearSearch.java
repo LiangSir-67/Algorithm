@@ -23,23 +23,18 @@ public class LinearSearch {
     }
 
     public static void main(String[] args) {
-        // 因为Java泛型是不支持基本数据类型的，只支持类对象，所以我们这里需要使用int的包装类Integer
-        Integer[] data = {24, 18, 12, 9, 16, 66, 21, 32, 5};
-        // 找到返回索引位置
-        int res = LinearSearch.search(data, 16);
-        System.out.println(res);
+        int[] dataSize = {1000000, 10000000};
+        for (int n : dataSize) {
+            // 因为Java泛型是不支持基本数据类型的，只支持类对象，所以我们这里需要使用int的包装类Integer
+            Integer[] data = ArrayGenerator.generateOrderdArray(n);
+            long startTime = System.nanoTime();
+            for (int k = 0;k < 100;k++) {
+                LinearSearch.search(data,n);
+            }
+            long endTime = System.nanoTime();
+            double time = (endTime - startTime) / 1000000000.0;
+            System.out.println("n = " + n + ",100 runs : " + time + "s");
+        }
 
-        // 未找到返回-1
-        int res2 = LinearSearch.search(data, 567);
-        System.out.println(res2);
-
-        Student[] students = {
-                new Student("183801","Alice"),
-                new Student("183802","LiangSir"),
-                new Student("183803","CoderTh")
-        };
-        Student LiangSir = new Student("183802","LiangSir");
-        int res3 = LinearSearch.search(students, LiangSir);
-        System.out.println(res3);
     }
 }
