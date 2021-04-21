@@ -21,11 +21,12 @@ public class InsertionSort {
             //        break;
             //    }
             //}
-            for (int j = i; j - 1 >= 0 && arr[j].compareTo(arr[j - 1]) < 0 ; j--) {
-                swap(arr,j,j-1);
+            for (int j = i; j - 1 >= 0 && arr[j].compareTo(arr[j - 1]) < 0; j--) {
+                swap(arr, j, j - 1);
             }
         }
     }
+
 
     /**
      * 上述排序方法的一个小优化(常数级别的，并不影响时间复杂度)
@@ -36,7 +37,7 @@ public class InsertionSort {
             //将arr[i]插入到合适的位置
             E t = arr[i];   //暂存arr[i]
             int j;
-            for (j = i;j - 1 >= 0 && t.compareTo(arr[j - 1]) < 0;j--){
+            for (j = i; j - 1 >= 0 && t.compareTo(arr[j - 1]) < 0; j--) {
                 arr[j] = arr[j - 1];
             }
             arr[j] = t;
@@ -60,9 +61,9 @@ public class InsertionSort {
         int[] dataSize = {10000, 100000};
         for (int n : dataSize) {
             Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
-            Integer[] arr2 = Arrays.copyOf(arr,arr.length);
+            Integer[] arr2 = Arrays.copyOf(arr, arr.length);
             SortingHelper.sortTest("InsertionSort", arr);
-            SortingHelper.sortTest("InsertionSort2",arr2);
+            SortingHelper.sortTest("InsertionSort2", arr2);
         }
     }
 }
