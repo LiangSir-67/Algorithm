@@ -35,6 +35,5 @@ public class LinearSearch {
             double time = (endTime - startTime) / 1000000000.0;
             System.out.println("n = " + n + ",100 runs : " + time + "s");
         }
-
     }
 }
