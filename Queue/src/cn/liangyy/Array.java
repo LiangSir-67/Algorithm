@@ -1,3 +1,5 @@
+package cn.liangyy;
+
 /**
  * 基于Java的数组，封装属于我们自己的动态数组（自动扩容，缩容）
  *
@@ -217,7 +219,7 @@ public class Array<E> {
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append(String.format("Array: size = %d , capacity = %d\n", size, data.length));
+        res.append(String.format("cn.liangyy.Array: size = %d , capacity = %d\n", size, data.length));
         res.append('[');
         for (int i = 0; i < size; i++) {
             res.append(data[i]);

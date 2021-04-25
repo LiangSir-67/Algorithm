@@ -1,3 +1,5 @@
+package cn.liangyy;
+
 import java.util.Random;
 
 /**
@@ -12,13 +14,13 @@ public class Main {
 
         ArrayQueue<Integer> arrayQueue = new ArrayQueue<>();
         double time1 = testQueue(arrayQueue, opCount);
-        System.out.println("ArrayQueue, time: "+ time1 + "s");
+        System.out.println("cn.liangyy.ArrayQueue, time: "+ time1 + "s");
 
         System.out.println("------------------------------");
 
         LoopQueue<Integer> loopQueue = new LoopQueue<>();
         double time2 = testQueue(loopQueue, opCount);
-        System.out.println("LoopQueue, time: "+ time2 + "s");
+        System.out.println("cn.liangyy.LoopQueue, time: "+ time2 + "s");
     }
 
     /**

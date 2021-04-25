@@ -1,3 +1,5 @@
+package cn.liangyy;
+
 /**
  * @Author: 梁歪歪 <1732178815@qq.com>
  * @Description: blog <liangyy.cn>
@@ -46,7 +48,7 @@ public class ArrayQueue<E> implements Queue<E> {
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append("Queue: ");
+        res.append("cn.liangyy.Queue: ");
         res.append("front [");
         for (int i = 0; i < array.getSize(); i++) {
             res.append(array.get(i));
