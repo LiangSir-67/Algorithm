@@ -1,6 +1,8 @@
 package cn.liangyy;
 
 /**
+ * 循环队列
+ *
  * @Author: 梁歪歪 <1732178815@qq.com>
  * @Description: blog <liangyy.cn>
  * @Create 2021-04-25-14:47
@@ -93,7 +95,7 @@ public class LoopQueue<E> implements Queue<E> {
         for (int i = 0; i < size; i++) {
             res.append(data[i]);
             res.append(data[(front + i) % data.length]);
-            if((i + front + 1) % data.length != tail)
+            if ((i + front + 1) % data.length != tail)
                 res.append(", ");
         }
         res.append("] tail");
