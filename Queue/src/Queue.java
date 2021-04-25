@@ -4,6 +4,7 @@
  * @Create 2021-04-25-14:23
  */
 public interface Queue<E> {
+
     int getSize();
     boolean isEmpty();
     void enqueue(E e);
