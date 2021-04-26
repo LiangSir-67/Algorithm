@@ -6,7 +6,6 @@ package cn.liangyy;
  * @Create 2021-04-23-9:57
  */
 public class ArrayStack<E> implements Stack<E> {
-
     Array<E> array;
 
     public ArrayStack(int capacity){
