@@ -11,7 +11,7 @@ package cn.liangyy.leetcode;
 public class Solution203_3 {
     public ListNode removeElements(ListNode head, int val) {
         if (head == null){
-            return null;
+            return head;
         }
         head.next = removeElements(head.next, val);
         return head.val == val ? head.next : head;
