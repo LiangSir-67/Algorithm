@@ -24,31 +24,30 @@ public class ReversePairs {
 
 
     // 2.使用归并排序
-    private int res = 0;
-
     public int reversePairs(int[] nums){
         int[] temp = new int[nums.length];
-        res = 0;
-        sort(nums, temp, 0, nums.length - 1);
-        return res;
+        return sort(nums, temp, 0, nums.length - 1);
     }
 
 
-    private void sort(int[] arr, int[] temp, int l, int r) {
+    private int sort(int[] arr, int[] temp, int l, int r) {
         if (l >= r) {
-            return;
+            return 0;
         }
 
+        int mergeRes = 0;
         int mid = l + (r - l) / 2;
-        sort(arr, temp, l, mid);
-        sort(arr, temp, mid + 1, r);
+        mergeRes += sort(arr, temp, l, mid);
+        mergeRes += sort(arr, temp, mid + 1, r);
         if (arr[mid] > arr[mid + 1]) {
-            merge(arr, temp, l, mid, r);
+            mergeRes += merge(arr, temp, l, mid, r);
         }
+        return mergeRes;
     }
 
-    private void merge(int[] arr, int[] temp, int l, int mid, int r) {
+    private int merge(int[] arr, int[] temp, int l, int mid, int r) {
         System.arraycopy(arr, l, temp, l, r - l + 1);
+        int res = 0;
 
         int i = l, j = mid + 1;
         // 每轮循环为arr[k]赋值
@@ -68,5 +67,6 @@ public class ReversePairs {
                 j++;
             }
         }
+        return res;
     }
 }
