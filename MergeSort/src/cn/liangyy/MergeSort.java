@@ -12,6 +12,7 @@ import java.util.Arrays;
 public class MergeSort {
     private MergeSort(){}
 
+    // 自顶向下的归并排序
     public static <E extends Comparable<E>> void sort(E[] arr){
         E[] temp = Arrays.copyOf(arr, arr.length);
         sort(arr, temp , 0, arr.length - 1);
@@ -28,7 +29,26 @@ public class MergeSort {
         sort(arr, temp, l, mid);
         sort(arr, temp, mid + 1, r);
         if (arr[mid].compareTo(arr[mid + 1]) > 0){
-            merge2(arr, temp, l, mid, r);
+            merge(arr, temp, l, mid, r);
+        }
+    }
+
+
+    // 自底向上的归并排序
+    public static <E extends Comparable<E>> void sortBU(E[] arr){
+        E[] temp = Arrays.copyOf(arr, arr.length);
+
+        int n = arr.length;
+
+        // 遍历合并的区间长度
+        for (int sz = 1; sz < n; sz += sz){
+            // 遍历合并的两个区间的起始位置
+            /* 合并[i,i + sz -1]和Math.min(i + sz + sz -1, n - 1) */
+            for (int i = 0; i + sz < n; i += sz + sz){
+                if (arr[i + sz - 1].compareTo(arr[i + sz]) > 0){
+                    merge(arr, temp, i, i + sz -1, Math.min(i + sz + sz -1, n - 1));
+                }
+            }
         }
     }
 
@@ -41,7 +61,7 @@ public class MergeSort {
      * @param r
      * @param <E>
      */
-    private static <E extends Comparable<E>> void merge2(E[] arr, E[] temp, int l, int mid, int r){
+    private static <E extends Comparable<E>> void merge(E[] arr, E[] temp, int l, int mid, int r){
         System.arraycopy(arr, l, temp, l, r - l + 1);
 
         int i = l, j = mid + 1;
@@ -65,9 +85,10 @@ public class MergeSort {
 
 
     public static void main(String[] args) {
-        int n = 100000;
+        int n = 5000000;
         Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
-        //Integer[] arr = new Integer[]{5, 8, 9, 4, 1, 3, 10, 11};
+        Integer[] arrBU = Arrays.copyOf(arr,arr.length);
         SortingHelper.sortTest("MergeSort",arr);
+        SortingHelper.sortTest("MergeSortBU",arrBU);
     }
 }

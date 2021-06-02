@@ -37,6 +37,10 @@ public class SortingHelper {
             MergeSort_Optimize.sort3(arr);
         }else if (sortname.equals("MergeSort4")) {
             MergeSort_Optimize.sort4(arr);
+        }else if (sortname.equals("MergeSortBU")) {
+            MergeSort.sortBU(arr);
+        }else if (sortname.equals("MergeSortBUOpt")) {
+            MergeSort_Optimize.sortBUOpt(arr);
         }
 
         long endTime = System.nanoTime();

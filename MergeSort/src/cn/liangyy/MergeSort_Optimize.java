@@ -180,16 +180,60 @@ public class MergeSort_Optimize {
     }
 
 
+    // 自底向上的归并排序
+    public static <E extends Comparable<E>> void sortBU(E[] arr){
+        E[] temp = Arrays.copyOf(arr, arr.length);
+
+        int n = arr.length;
+
+        // 遍历合并的区间长度
+        for (int sz = 1; sz < n; sz += sz){
+            // 遍历合并的两个区间的起始位置
+            /* 合并[i,i + sz -1]和Math.min(i + sz + sz -1, n - 1) */
+            for (int i = 0; i + sz < n; i += sz + sz){
+                if (arr[i + sz - 1].compareTo(arr[i + sz]) > 0){
+                    merge2(arr, temp, i, i + sz -1, Math.min(i + sz + sz -1, n - 1));
+                }
+            }
+        }
+    }
+
+    // 使用插入排序优化 自底向上的归并排序
+    public static <E extends Comparable> void sortBUOpt(E[] arr){
+
+        E[] temp = Arrays.copyOf(arr, arr.length);
+
+        int n = arr.length;
+
+        // 使用插入排序优化
+        // 遍历一遍，对所有 arr[i, i + 15] 的区间，使用插入排序法
+        for(int i = 0; i < n; i += 16)
+            InsertionSort.sort(arr, i, Math.min(n - 1, i + 15));
+
+        // 遍历合并的区间长度
+        // 注意，sz 从 16 开始
+        for(int sz = 16; sz < n; sz += sz){
+
+            // 遍历合并的两个区间的起始位置 i
+            // 合并 [i, i + sz - 1] 和 [i + sz, i + sz + sz - 1]
+            for(int i = 0; i + sz < n; i += sz + sz)
+                if(arr[i + sz - 1].compareTo(arr[i + sz]) > 0)
+                    merge2(arr, temp, i, i + sz - 1, Math.min(i + sz + sz - 1, n - 1));
+        }
+    }
+
     public static void main(String[] args) {
         int n = 5000000;
         Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
         Integer[] arr2 = Arrays.copyOf(arr, arr.length);
         Integer[] arr3 = Arrays.copyOf(arr, arr.length);
         Integer[] arr4 = Arrays.copyOf(arr, arr.length);
+        Integer[] arrBUOpt = Arrays.copyOf(arr, arr.length);
 
         SortingHelper.sortTest("MergeSort",arr);
         SortingHelper.sortTest("MergeSort2",arr2);
         SortingHelper.sortTest("MergeSort3",arr3);
         SortingHelper.sortTest("MergeSort4",arr4);
+        SortingHelper.sortTest("MergeSortBUOpt",arrBUOpt);
     }
 }
