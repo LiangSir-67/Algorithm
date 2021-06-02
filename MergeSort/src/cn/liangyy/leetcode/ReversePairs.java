@@ -48,7 +48,6 @@ public class ReversePairs {
     private int merge(int[] arr, int[] temp, int l, int mid, int r) {
         System.arraycopy(arr, l, temp, l, r - l + 1);
         int res = 0;
-
         int i = l, j = mid + 1;
         // 每轮循环为arr[k]赋值
         for (int k = l; k <= r; k++) {
