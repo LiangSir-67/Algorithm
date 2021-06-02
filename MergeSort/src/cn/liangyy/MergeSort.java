@@ -3,7 +3,7 @@ package cn.liangyy;
 import java.util.Arrays;
 
 /**
- * 归并排序
+ * 归并排序(其中包括两种方法：自顶向下、自底向上)
  *
  * @Author: 梁歪歪 <1732178815@qq.com>
  * @Description: blog <liangyy.cn>
