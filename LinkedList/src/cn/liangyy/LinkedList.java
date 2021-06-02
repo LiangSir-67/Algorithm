@@ -1,6 +1,8 @@
 package cn.liangyy;
 
 /**
+ * 链表
+ *
  * @Author: 梁歪歪 <1732178815@qq.com>
  * @Description: blog <liangyy.cn>
  * @Create 2021-04-26-8:53
@@ -103,10 +105,11 @@ public class LinkedList<E> {
     /**
      * 获取链表的第index（0-based）个位置的元素
      * 在链表中不是一个常用的操作，练习用
+     *
      * @param index
      * @return
      */
-    public E get(int index){
+    public E get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Get failed.Illegal index.");
         }
@@ -119,27 +122,30 @@ public class LinkedList<E> {
 
     /**
      * 获取链表中的第一个元素
+     *
      * @return
      */
-    public E getFirst(){
+    public E getFirst() {
         return get(0);
     }
 
     /**
      * 获取链表中的最后一个元素
+     *
      * @return
      */
-    public E getLast(){
+    public E getLast() {
         return get(size - 1);
     }
 
     /**
      * 修改链表的第index（0-based）位置的元素为e
      * 在链表中不是一个常用的操作，练习用
+     *
      * @param index
      * @param e
      */
-    public void set(int index, E e){
+    public void set(int index, E e) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Set failed.Illegal index.");
         }
@@ -152,13 +158,14 @@ public class LinkedList<E> {
 
     /**
      * 查找链表中是否有元素e
+     *
      * @param e
      * @return
      */
-    public boolean contains(E e){
+    public boolean contains(E e) {
         Node cur = dummyHead.next;
-        while (cur != null){
-            if (cur.e.equals(e)){
+        while (cur != null) {
+            if (cur.e.equals(e)) {
                 return true;
             }
             cur = cur.next;
@@ -169,10 +176,11 @@ public class LinkedList<E> {
     /**
      * 从链表中删除index（0-based）位置的元素，返回删除的元素
      * 在链表中不是一个常用的操作，练习用
+     *
      * @param index
      * @return
      */
-    public E remove(int index){
+    public E remove(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Remove failed.Illegal index.");
         }
@@ -189,17 +197,19 @@ public class LinkedList<E> {
 
     /**
      * 从链表中删除第一个元素，返回删除的元素
+     *
      * @return
      */
-    public E removeFirst(){
+    public E removeFirst() {
         return remove(0);
     }
 
     /**
      * 从链表中删除最后一个元素，返回删除的元素
+     *
      * @return
      */
-    public E removeLast(){
+    public E removeLast() {
         return remove(size - 1);
     }
 
@@ -211,7 +221,7 @@ public class LinkedList<E> {
         //    res.append(cur + "->");
         //    cur = cur.next;
         //}
-        for (Node cur = dummyHead.next; cur != null; cur = cur.next){
+        for (Node cur = dummyHead.next; cur != null; cur = cur.next) {
             res.append(cur + " -> ");
         }
         res.append("NULL");
