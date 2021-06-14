@@ -1,5 +1,7 @@
 package cn.liangyy;
 
+import java.util.Random;
+
 /**
  * @Author: 梁歪歪 <1732178815@qq.com>
  * @Description: blog <liangyy.cn>
@@ -10,20 +12,25 @@ public class QuickSort {
     private QuickSort(){}
 
     public static <E extends Comparable<E>> void sort(E[] arr){
-        sort(arr, 0, arr.length - 1);
+        Random random = new Random();
+        sort(arr, 0, arr.length - 1,random);
     }
 
-    private static <E extends Comparable<E>> void sort(E[] arr, int l, int r){
+    private static <E extends Comparable<E>> void sort(E[] arr, int l, int r,Random random){
         if (l >= r){
             return;
         }
-        int partition = partition(arr, l, r);
-        sort(arr, l, partition - 1);
-        sort(arr, partition + 1, r);
+        int partition = partition(arr, l, r, random);
+        sort(arr, l, partition - 1, random);
+        sort(arr, partition + 1, r, random);
 
     }
 
-    private static <E extends Comparable<E>> int partition(E[] arr, int l, int r){
+    private static <E extends Comparable<E>> int partition(E[] arr, int l, int r, Random random){
+        // 生成[l,r]之间的随机索引  (random.nextInt(r - l + 1))生成的是[0,r]之间的随机索引
+        int p = random.nextInt(r - l + 1) + l;
+        swap(arr, l , p);
+
         // arr[l+1...j] < v;arr[j+1...i] > v
         int j = l;
         for (int i = l + 1; i <= r ; i++) {
